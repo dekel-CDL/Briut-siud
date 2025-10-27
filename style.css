@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: 'Heebo', Arial, sans-serif;
+  direction: rtl;
+  text-align: center;
+  color: #333;
+  background-color: #f7f7f7;
+}
+.hero {
+  position: relative;
+  background-image: url('https://nursing4u.co.il/wp-content/uploads/2020/11/%D7%A9%D7%99%D7%A8%D7%95%D7%AA-%D7%A1%D7%99%D7%A2%D7%95%D7%93-%D7%9C%D7%9E%D7%91%D7%95%D7%92%D7%A8%D7%99%D7%9D.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  max-width: 340px;
+  margin-top: 10px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+.hero-content {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 400px;
+}
+h1 {
+  color: #f37021;
+}
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+button.primary {
+  background-color: #32a852;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin-top: 15px;
+}
+button.primary:hover {
+  background-color: #289b46;
+}
+.loader {
+  display: none;
+  margin: 20px auto;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #f37021;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.result {
+  display: none;
+  margin-top: 20px;
+  background-color: #e7f8e7;
+  border: 2px solid #32a852;
+  padding: 20px;
+  border-radius: 8px;
+}
+.whatsapp-btn {
+  background-color: #25D366;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+footer {
+  background-color: #fff;
+  padding: 15px 0;
+  font-size: 0.9em;
+  border-top: 2px solid #f37021;
+}
+footer a {
+  color: #f37021;
+  text-decoration: none;
+  font-weight: bold;
+}

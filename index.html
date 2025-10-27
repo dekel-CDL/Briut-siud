@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>בריאות וסיעוד - בדיקת זכאות</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="hero">
+    <img src="logo2.png" alt="לוגו בריאות וסיעוד" class="logo">
+    <div class="hero-content">
+      <h1>בדיקת זכאות למימוש זכויות רפואיות</h1>
+      <p>מלא את פרטיך ונבצע עבורך בדיקה מהירה לזכאותך.</p>
+      <form id="contactForm" onsubmit="return checkEligibility(event)">
+        <input type="text" id="name" placeholder="שם מלא" required>
+        <input type="tel" id="phone" placeholder="טלפון" required>
+        <input type="text" id="id" placeholder="תעודת זהות" required>
+        <input type="date" id="birthdate" placeholder="תאריך לידה מלא" required>
+        <textarea id="notes" rows="3" placeholder="תיאור קצר של מצב רפואי (לא חובה)"></textarea>
+        <button type="submit" class="primary">בדוק זכאות</button>
+      </form>
+      <div class="loader" id="loader"></div>
+      <div class="result" id="result">
+        🎉 נמצאה זכאות עקרונית! נציג יחזור אליך בהקדם.<br><br>
+        <a id="whatsappLink" href="#" target="_blank" class="whatsapp-btn">שלח הודעה בוואטסאפ</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 בריאות וסיעוד | <a href="https://briut-siud.co.il" target="_blank">לאתר הראשי</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
