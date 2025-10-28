@@ -1,35 +1,52 @@
-(function(){
-  emailjs.init("sZ2-zSWqFO4O0y0L4");
+// === הגדרת EmailJS ===
+(function() {
+  emailjs.init("sZ2-zSWqFO4O0y0L4"); // public key
 })();
 
 function checkEligibility(event) {
   event.preventDefault();
-  const loader = document.getElementById('loader');
-  const result = document.getElementById('result');
-  const form = document.getElementById('contactForm');
 
-  loader.style.display = 'block';
-  form.style.display = 'none';
-  result.style.display = 'none';
+  const loader = document.getElementById("loader");
+  const result = document.getElementById("result");
+  const whatsappLink = document.getElementById("whatsappLink");
 
-  setTimeout(() => {
-    loader.style.display = 'none';
-    result.style.display = 'block';
+  loader.style.display = "block";
+  result.style.display = "none";
 
-    const params = {
-      name: document.getElementById('name').value,
-      phone: document.getElementById('phone').value,
-      id: document.getElementById('id').value,
-      birthdate: document.getElementById('birthdate').value,
-      notes: document.getElementById('notes').value
-    };
+  // שליפת הנתונים מהטופס
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const id = document.getElementById("id").value;
+  const birthdate = document.getElementById("birthdate").value;
+  const notes = document.getElementById("notes").value;
 
-    emailjs.send("service_vfjusnr", "template_61wg9me", params)
-    .then(() => console.log("נשלח בהצלחה ל‑EmailJS"));
+  // בניית אובייקט הנתונים ל־EmailJS
+  const templateParams = {
+    full_name: name,
+    phone: phone,
+    id_number: id,
+    birth_date: birthdate,
+    medical_description: notes,
+    source: "דף נחיתה – בריאות וסיעוד",
+    page_url: window.location.href,
+    submitted_at: new Date().toLocaleString('he-IL'),
+    referrer: document.referrer || ""
+  };
 
-    const message = encodeURIComponent("שלום אני מעוניין לבדוק את הזכאות שלי");
-    const whatsappUrl = `https://wa.me/972547768879?text=${message}`;
-    document.getElementById('whatsappLink').href = whatsappUrl;
-    window.open(whatsappUrl, '_blank');
-  }, 5000);
+  // שליחה ל־EmailJS
+  emailjs.send("service_vfjusnr", "template_0d2pkml", templateParams)
+    .then(() => {
+      loader.style.display = "none";
+      result.style.display = "block";
+      // קישור וואטסאפ עם הודעה מוכנה
+      const encodedMsg = encodeURIComponent(`שלום, בדקתי זכאות באתר ואני מעוניין/ת להמשיך בתהליך. שמי ${name}, טלפון ${phone}.`);
+      whatsappLink.href = `https://wa.me/972547768879?text=${encodedMsg}`;
+    })
+    .catch((error) => {
+      loader.style.display = "none";
+      alert("קרתה שגיאה בשליחה. נסה שוב בעוד רגע.");
+      console.error("EmailJS error:", error);
+    });
+
+  return false;
 }
